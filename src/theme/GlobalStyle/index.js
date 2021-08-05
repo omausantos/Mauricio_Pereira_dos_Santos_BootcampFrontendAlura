@@ -6,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    svg {
+        vertical-align: middle;
+    }
+
     ${normalize}
 
     body {

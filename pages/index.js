@@ -1,40 +1,46 @@
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import Capa from '../src/components/commons/Capa';
+import Text from '../src/components/foundation/Text';
+import Nav from '../src/components/commons/Nav';
+import Footer from '../src/components/commons/Footer';
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
-
-
-const Header = styled.header`
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: url('/images/plant-left-mobile.jpg') left top no-repeat, url('/images/plant-right-mobile.jpg') right bottom no-repeat;
-  border-bottom: 2px solid #E9C46A;
-  h1 {
-    ${({ theme }) => theme.typographyVariants.titleXL}
-    text-transform: uppercase;
+const WrapperProjetos = styled.div`
     text-align: center;
-    margin-bottom: 0;    
-  }
-  h2 {
-    ${({ theme }) => theme.typographyVariants.subTitleXL}
-    margin-top: 0;
-    line-height: normal;    
-  }
 `;
 
 export default function Home() {
   return (
     <>
-      <Header>
-        <h1>Mary Elizabeth</h1>
-        <h2>Portfolio</h2>
-      </Header>
-      <h2>Aqui será o menu</h2>
+      <Capa.Base>
+        <Capa.Container>
+          <Text
+            tag="h1"
+            variant="titleXL"
+            cssinline={{
+              textTransform: 'uppercase',
+              marginBottom: '0',
+            }}
+          >
+            Mauricio Santos
+          </Text>
+          <Text
+            tag="h2"
+            variant="subTitleXL"
+            cssinline={{
+              marginTop: '0',
+              lineHeight: '0.9',
+            }}
+          >
+            Portfolio
+          </Text>
+        </Capa.Container>
+        <Nav />
+      </Capa.Base>
+      <WrapperProjetos>
+        WrapperProjetos
+      </WrapperProjetos>
+      <Footer />
     </>
-  )
+  );
 }
