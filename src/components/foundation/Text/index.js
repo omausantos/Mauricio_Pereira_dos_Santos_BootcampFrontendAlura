@@ -31,6 +31,6 @@ Text.defaultProps = {
 
 Text.propTypes = {
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
-  variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
+  variant: PropTypes.oneOf(['titleXL', 'subTitleXL', 'paragraph1', 'smallestException']),
   children: PropTypes.node.isRequired,
 };

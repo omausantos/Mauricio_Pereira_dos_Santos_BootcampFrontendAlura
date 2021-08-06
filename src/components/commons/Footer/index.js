@@ -45,10 +45,11 @@ export default function Footer() {
   return (
     <FooterWrapper>
       {icons.map((icon) => (
-        <FooterWrapper.FooterIcon>
+        <FooterWrapper.FooterIcon
+          key={icon.title}
+        >
           <Text
             tag="a"
-            key={icon.url}
             href={icon.url}
           >
             {icon.svg}
