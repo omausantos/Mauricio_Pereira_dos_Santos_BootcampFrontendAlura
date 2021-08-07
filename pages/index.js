@@ -7,28 +7,39 @@ import Projetos from '../src/components/commons/Projetos';
 
 const cards = [
   {
-    title: 'Projeto report 1',
-    img: '/images/projects/image-01.jpg',
-    order: 1,
-    destaque: false,
+    title: 'Projeto report',
+    img: '/images/projects/time-management.jpg',
+    destaque: 'Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis!',
+    cssinline: {
+      textAlign: {
+        xs: 'center',
+        md: 'left',
+      },
+    },
   },
   {
-    title: 'Projeto report 2',
-    img: '/images/projects/image-01.jpg',
-    order: 1,
+    title: 'Projeto report',
+    img: '/images/projects/annual-report.jpg',
     destaque: false,
+    cssinline: {
+      textAlign: 'center',
+    },
   },
   {
-    title: 'Projeto report 3',
-    img: '/images/projects/image-01.jpg',
-    order: 1,
+    title: 'Projeto report',
+    img: '/images/projects/time-management.jpg',
     destaque: false,
+    cssinline: {
+      textAlign: 'center',
+    },
   },
   {
-    title: 'Projeto report Destaque',
-    img: '/images/projects/image-01.jpg',
-    order: -1,
-    destaque: true,
+    title: 'Projeto report',
+    img: '/images/projects/annual-report.jpg',
+    destaque: false,
+    cssinline: {
+      textAlign: 'center',
+    },
   },
 ];
 
@@ -79,23 +90,25 @@ export default function Home() {
         <Projetos.List>
 
           {cards.map((card) => (
-            <Projetos.Card key={card.title} order={card.order}>
-              <Projetos.CardContainer>
+            <Projetos.Card key={card.title} destaque={card.destaque}>
+              <Projetos.CardContainer destaque={card.destaque}>
                 {card.destaque ? <Projetos.CardDestaque /> : ''}
-                <Projetos.CardImage>
+                <Projetos.CardImage destaque={card.destaque}>
                   <img src={card.img} alt="" />
                 </Projetos.CardImage>
-                <Projetos.CardTitle>
-                  <Text
-                    tag="a"
-                    href="#"
-                    cssinline={{
-                      textAlign: 'center',
-                    }}
-                  >
-                    {card.title}
-                  </Text>
-                </Projetos.CardTitle>
+                <Projetos.CardInfo destaque={card.destaque}>
+                  <Projetos.CardTitle cssinline={card.cssinline}>
+                    <Text
+                      tag="a"
+                      href="#"
+                    >
+                      {card.title}
+                    </Text>
+                  </Projetos.CardTitle>
+                  <Projetos.CardText>
+                    {card.destaque}
+                  </Projetos.CardText>
+                </Projetos.CardInfo>
 
               </Projetos.CardContainer>
             </Projetos.Card>

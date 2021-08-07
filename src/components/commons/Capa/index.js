@@ -12,7 +12,7 @@ const Base = styled.div`
             background: url('/images/plant-left-mobile.jpg') left top no-repeat, url('/images/plant-right-mobile.jpg') right bottom no-repeat; 
         `,
     md: css`
-            background: url('/images/plant-right-desktop.png') right bottom no-repeat, url('/images/plant-left-desktop.jpg') left top no-repeat; 
+            background: url('/images/plant-right-desktop.png') right bottom no-repeat, url('/images/plant-left-desktop.jpg') left top no-repeat;
         `,
   })};  
 `;
