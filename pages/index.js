@@ -7,6 +7,7 @@ import Projetos from '../src/components/commons/Projetos';
 
 const cards = [
   {
+    numberitem: 'teste 01',
     title: 'Projeto report',
     img: '/images/projects/time-management.jpg',
     destaque: 'Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis!',
@@ -18,6 +19,7 @@ const cards = [
     },
   },
   {
+    numberitem: 'teste 02',
     title: 'Projeto report',
     img: '/images/projects/annual-report.jpg',
     destaque: false,
@@ -26,6 +28,7 @@ const cards = [
     },
   },
   {
+    numberitem: 'teste 03',
     title: 'Projeto report',
     img: '/images/projects/time-management.jpg',
     destaque: false,
@@ -34,6 +37,7 @@ const cards = [
     },
   },
   {
+    numberitem: 'teste 04',
     title: 'Projeto report',
     img: '/images/projects/annual-report.jpg',
     destaque: false,
@@ -90,7 +94,7 @@ export default function Home() {
         <Projetos.List>
 
           {cards.map((card) => (
-            <Projetos.Card key={card.title} destaque={card.destaque}>
+            <Projetos.Card key={card.numberitem} destaque={card.destaque}>
               <Projetos.CardContainer destaque={card.destaque}>
                 {card.destaque ? <Projetos.CardDestaque /> : ''}
                 <Projetos.CardImage destaque={card.destaque}>
