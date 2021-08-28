@@ -3,6 +3,9 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import breakpointsMedia from '../../theme/utils/breakpointsMedia';
 import Text from '../foundation/Text';
+import errorAnimation from './animations/error.json';
+import successAnimation from './animations/success.json';
+import MensagemCadastro from './animations';
 
 const FormWrapper = styled.div`
   display: flex;
@@ -112,9 +115,7 @@ export default function Formulario({ onClose }) {
     mensagem: '',
   });
 
-  // eslint-disable-next-line no-unused-vars
   const [isFormSubmited, setIsFormSubmited] = React.useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [submissionStatus, setSubmissionStatus] = React.useState(formStates.DEFAULT);
 
   function handleChange(event) {
@@ -158,6 +159,11 @@ export default function Formulario({ onClose }) {
             })
             .then(() => {
               setSubmissionStatus(formStates.DONE);
+              setUserInfo({
+                nome: '',
+                email: '',
+                mensagem: '',
+              });
             })
             .catch(() => {
               setSubmissionStatus(formStates.ERROR);
@@ -178,18 +184,6 @@ export default function Formulario({ onClose }) {
           <path d="M38.77 29.4814L35.2401 33.0113L38.6568 36.428L35.8963 39.1886L32.4795 35.7718L28.9497 39.3017L25.9855 36.3375L29.5154 32.8076L26.076 29.3683L28.8365 26.6077L32.2759 30.0471L35.8058 26.5172L38.77 29.4814Z" fill="black" />
         </ButtonClose>
 
-        {isFormSubmited && submissionStatus === formStates.DONE && (
-        <p>
-          Cadastro efetuado com sucesso!
-        </p>
-        )}
-
-        {isFormSubmited && submissionStatus === formStates.ERROR && (
-        <p>
-          Deu ruim, tentar novamente!
-        </p>
-        )}
-
         <Text
           tag="h4"
           cssinline={{
@@ -204,6 +198,25 @@ export default function Formulario({ onClose }) {
         >
           ENVIE SUA MENSAGEM
         </Text>
+
+        {isFormSubmited && submissionStatus === formStates.DONE && (
+          <MensagemCadastro
+            color="green"
+            animation={successAnimation}
+          >
+            Cadastro efetuado com sucesso!
+          </MensagemCadastro>
+        )}
+
+        {isFormSubmited && submissionStatus === formStates.ERROR && (
+          <MensagemCadastro
+            color="red"
+            animation={errorAnimation}
+          >
+            Deu ruim, tentar novamente!
+          </MensagemCadastro>
+        )}
+
         <Label
           tag="label"
           htmlFor="nome"
