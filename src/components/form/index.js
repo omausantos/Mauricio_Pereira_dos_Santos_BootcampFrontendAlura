@@ -81,15 +81,61 @@ const Button = styled.button`
   width: 100%;
   font-size: 28px;
   cursor: pointer;
+  :disabled {
+    cursor: auto;
+  }
+  :disabled svg {
+    fill-opacity: 0.3;
+  }
   svg {
     margin-left: 8px;
   }
+  
 `;
 
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+};
+
+function emailValidar(email) {
+  const pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+  return !pattern.test(email);
+}
+
 export default function Formulario({ onClose }) {
+  const [userInfo, setUserInfo] = React.useState({
+    nome: '',
+    email: '',
+    mensagem: '',
+  });
+
+  // eslint-disable-next-line no-unused-vars
+  const [isFormSubmited, setIsFormSubmited] = React.useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [submissionStatus, setSubmissionStatus] = React.useState(formStates.DEFAULT);
+
+  function handleChange(event) {
+    const fieldName = event.target.getAttribute('name');
+    setUserInfo({
+      ...userInfo,
+      [fieldName]: event.target.value,
+    });
+  }
+
+  const isFormInvalid = userInfo.nome.length === 0
+    || emailValidar(userInfo.email)
+    || userInfo.mensagem.length === 0;
+
   return (
     <FormWrapper>
-      <Form>
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+      >
         <ButtonClose
           width="66"
           height="66"
@@ -119,13 +165,17 @@ export default function Formulario({ onClose }) {
         </Text>
         <Label
           tag="label"
-          htmlFor="name"
+          htmlFor="nome"
         >
           Seu nome
         </Label>
         <Input
           tag="input"
-          id="name"
+          id="nome"
+          name="nome"
+          placeholder="Digite seu nome"
+          value={userInfo.nome}
+          onChange={handleChange}
         />
         <Label
           tag="label"
@@ -136,6 +186,10 @@ export default function Formulario({ onClose }) {
         <Input
           tag="input"
           id="email"
+          name="email"
+          placeholder="Digite seu email"
+          value={userInfo.email}
+          onChange={handleChange}
         />
         <Label
           tag="label"
@@ -146,9 +200,15 @@ export default function Formulario({ onClose }) {
         <Input
           tag="textarea"
           id="mensagem"
+          name="mensagem"
           rows="5"
+          placeholder="Digite sua mensagem"
+          value={userInfo.mensagem}
+          onChange={handleChange}
         />
-        <Button>
+        <Button
+          disabled={isFormInvalid}
+        >
           ENVIAR
           <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="23" cy="23" r="22.5" stroke="#E9C46A" />
