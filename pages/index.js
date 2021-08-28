@@ -49,6 +49,8 @@ const cards = [
 ];
 
 export default function Home() {
+  const [isFormOpen, setFormState] = React.useState(false);
+
   return (
     <>
       <Capa.Base>
@@ -120,10 +122,14 @@ export default function Home() {
           ))}
 
         </Projetos.List>
-        <Projetos.LinkForm />
+        <Projetos.LinkForm
+          onOpen={() => {
+            setFormState(true);
+          }}
+        />
       </Projetos.Wrapper>
       <Footer />
-      <Formulario />
+      {isFormOpen ? <Formulario onClose={() => { setFormState(false); }} /> : ''}
     </>
   );
 }

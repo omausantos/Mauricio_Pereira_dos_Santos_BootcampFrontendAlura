@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 import breakpointsMedia from '../../theme/utils/breakpointsMedia';
 import Text from '../foundation/Text';
 
@@ -85,7 +86,7 @@ const Button = styled.button`
   }
 `;
 
-export default function Formulario() {
+export default function Formulario({ onClose }) {
   return (
     <FormWrapper>
       <Form>
@@ -95,6 +96,9 @@ export default function Formulario() {
           viewBox="0 0 66 66"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          onClick={() => {
+            onClose();
+          }}
         >
           <circle cx="33" cy="33" r="22.5" transform="rotate(45 33 33)" stroke="#E9C46A" />
           <path d="M38.77 29.4814L35.2401 33.0113L38.6568 36.428L35.8963 39.1886L32.4795 35.7718L28.9497 39.3017L25.9855 36.3375L29.5154 32.8076L26.076 29.3683L28.8365 26.6077L32.2759 30.0471L35.8058 26.5172L38.77 29.4814Z" fill="black" />
@@ -155,3 +159,7 @@ export default function Formulario() {
     </FormWrapper>
   );
 }
+
+Formulario.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
