@@ -10,7 +10,6 @@ const FormWrapper = styled.div`
   bottom: 0;
   padding-right: 8px;
   padding-left: 8px;
-  display: none;
 `;
 
 const Form = styled.form`
@@ -116,7 +115,7 @@ export default function Formulario() {
         </Text>
         <Label
           tag="label"
-          for="name"
+          htmlFor="name"
         >
           Seu nome
         </Label>
@@ -126,7 +125,7 @@ export default function Formulario() {
         />
         <Label
           tag="label"
-          for="email"
+          htmlFor="email"
         >
           Seu e-mail
         </Label>
@@ -136,7 +135,7 @@ export default function Formulario() {
         />
         <Label
           tag="label"
-          for="mensagem"
+          htmlFor="mensagem"
         >
           Sua mensagem
         </Label>

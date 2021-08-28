@@ -120,7 +120,7 @@ export default function Home() {
           ))}
 
         </Projetos.List>
-
+        <Projetos.LinkForm />
       </Projetos.Wrapper>
       <Footer />
       <Formulario />

@@ -162,6 +162,36 @@ ${({ destaque }) => {
   }};
 
 `;
+const LinkFormWrapper = styled.div`
+  text-align: center;
+  ${breakpointsMedia({
+    xs: css`
+            font-size: 32px;
+            `,
+    md: css`                
+            font-size: 36px;
+            `,
+  })};
+  p {
+    margin:0;
+  }
+  svg {
+    margin: 8px 0 40px;
+    cursor: pointer;
+  }
+`;
+
+const LinkForm = () => (
+  <LinkFormWrapper>
+    <p>
+      Entre em contato
+    </p>
+    <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="23" cy="23" r="22.5" stroke="#E9C46A" />
+      <path d="M24.592 16.432V21.424H29.424V25.328H24.592V30.32H20.4V25.328H15.536V21.424H20.4V16.432H24.592Z" fill="black" />
+    </svg>
+  </LinkFormWrapper>
+);
 
 const Projetos = {
   Wrapper,
@@ -173,6 +203,7 @@ const Projetos = {
   CardTitle,
   CardText,
   CardDestaque,
+  LinkForm,
 };
 
 export { Projetos as default };

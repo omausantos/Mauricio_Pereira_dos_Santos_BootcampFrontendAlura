@@ -33,7 +33,7 @@ Text.defaultProps = {
 };
 
 Text.propTypes = {
-  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span', 'label', 'input']),
+  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span', 'label', 'input', 'textarea']),
   variant: PropTypes.oneOf(['titleXL', 'subTitleXL', 'paragraph1', 'smallestException']),
   cssinline: PropTypes.oneOfType([PropTypes.object]),
   children: PropTypes.node,
