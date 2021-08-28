@@ -129,7 +129,7 @@ export default function Home() {
         />
       </Projetos.Wrapper>
       <Footer />
-      {isFormOpen ? <Formulario onClose={() => { setFormState(false); }} /> : ''}
+      {isFormOpen && <Formulario onClose={() => { setFormState(false); }} />}
     </>
   );
 }
