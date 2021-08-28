@@ -4,6 +4,7 @@ import Text from '../src/components/foundation/Text';
 import Nav from '../src/components/commons/Nav';
 import Footer from '../src/components/commons/Footer';
 import Projetos from '../src/components/commons/Projetos';
+import Formulario from '../src/components/form';
 
 const cards = [
   {
@@ -122,6 +123,7 @@ export default function Home() {
 
       </Projetos.Wrapper>
       <Footer />
+      <Formulario />
     </>
   );
 }
