@@ -9,13 +9,15 @@ const TextBase = styled.span`
 `;
 
 export default function Text({
-  children, tag, variant, cssinline,
+  children, tag, variant, cssinline, ...props
 }) {
   return (
     <TextBase
       as={tag}
       variant={variant}
       cssinline={cssinline}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...props}
     >
 
       {children}
@@ -27,11 +29,12 @@ Text.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
   cssinline: {},
+  children: null,
 };
 
 Text.propTypes = {
-  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
+  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span', 'label', 'input', 'textarea']),
   variant: PropTypes.oneOf(['titleXL', 'subTitleXL', 'paragraph1', 'smallestException']),
   cssinline: PropTypes.oneOfType([PropTypes.object]),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };

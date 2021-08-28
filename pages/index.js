@@ -4,6 +4,7 @@ import Text from '../src/components/foundation/Text';
 import Nav from '../src/components/commons/Nav';
 import Footer from '../src/components/commons/Footer';
 import Projetos from '../src/components/commons/Projetos';
+import Formulario from '../src/components/form';
 
 const cards = [
   {
@@ -48,6 +49,8 @@ const cards = [
 ];
 
 export default function Home() {
+  const [isFormOpen, setFormState] = React.useState(false);
+
   return (
     <>
       <Capa.Base>
@@ -119,9 +122,14 @@ export default function Home() {
           ))}
 
         </Projetos.List>
-
+        <Projetos.LinkForm
+          onOpen={() => {
+            setFormState(true);
+          }}
+        />
       </Projetos.Wrapper>
       <Footer />
+      {isFormOpen && <Formulario onClose={() => { setFormState(false); }} />}
     </>
   );
 }
